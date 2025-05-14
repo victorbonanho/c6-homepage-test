@@ -1,15 +1,7 @@
 import { Box, Typography, Button } from "@mui/material";
+import { handleScrollTo } from "../../../utils/scrollUtils";
 
 const HeroSection = () => {
-  const handleScrollTo = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
   return (
     <Box
       sx={{

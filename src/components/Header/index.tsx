@@ -1,5 +1,6 @@
 import { AppBar, Toolbar, Typography, Box, List, Button } from "@mui/material";
 import MobileMenu from "./MobileMenu";
+import { handleScrollTo } from "../../utils/scrollUtils";
 
 const Header = () => {
   const menuItems = [
@@ -7,16 +8,6 @@ const Header = () => {
     { label: "Como funciona", sectionId: "features-section" },
     { label: "Cotações", sectionId: "cotation-section" },
   ];
-
-  const handleScrollTo = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
 
   return (
     <AppBar position="sticky">

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Menu, MenuItem, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { handleScrollTo } from "../../utils/scrollUtils";
 
 interface MobileMenuProps {
   items: Array<{
@@ -19,17 +20,6 @@ const MobileMenu = ({ items }: MobileMenuProps) => {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleScrollTo = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-    handleMenuClose();
   };
 
   return (
@@ -58,7 +48,10 @@ const MobileMenu = ({ items }: MobileMenuProps) => {
         container={anchorEl ? anchorEl.ownerDocument.body : undefined}
       >
         {items.map((item, index) => (
-          <MenuItem key={index} onClick={() => handleScrollTo(item.sectionId)}>
+          <MenuItem
+            key={index}
+            onClick={() => handleScrollTo(item.sectionId, handleMenuClose)}
+          >
             <Typography variant="body1" component="span">
               {item.label}
             </Typography>
